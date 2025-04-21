@@ -1,0 +1,23 @@
+name: Docker image build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v3
+
+      - name: Check if secret is present
+        run: echo "${{ secrets.DOCKERTOKEN }}" | wc -c
+      
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERTOKEN }}" | docker login -u "shriradheymishra" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t shriradheymishra/fast_api_dockerize .
+
+      - name: Push Docker image
+        run: docker push shriradheymishra/fast_api_dockerize
