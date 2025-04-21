@@ -14,10 +14,10 @@ jobs:
         run: echo "${{ secrets.DOCKERTOKEN }}" | wc -c
       
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKERTOKEN }}" | docker login -u "shriradheymishra" --password-stdin
+        run: echo "${{ secrets.DOCKERTOKEN }}" | docker login -u "darthdivyansh" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t shriradheymishra/fast_api_dockerize .
+        run: docker build -t darthdivyansh/lab8 .
 
       - name: Push Docker image
-        run: docker push shriradheymishra/fast_api_dockerize
+        run: docker push darthdivyansh/lab8
